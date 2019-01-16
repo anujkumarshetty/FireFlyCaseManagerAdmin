@@ -86,6 +86,7 @@ export default (state: DsheadertemplateState = initialState, action): Dsheaderte
       };
     case SUCCESS(ACTION_TYPES.CREATE_DSHEADERTEMPLATE):
     case SUCCESS(ACTION_TYPES.UPDATE_DSHEADERTEMPLATE):
+      console.log(action.payload.data);
       return {
         ...state,
         updating: false,

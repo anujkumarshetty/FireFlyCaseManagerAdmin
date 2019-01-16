@@ -68,9 +68,9 @@ export class Dsheadertemplate extends React.Component<IDsheadertemplateProps, ID
     return (
       <div>
         <h2 id="dsheadertemplate-heading">
-          Dsheadertemplates
+          Header Templates
           <Link to={`${match.url}/new`} className="btn btn-primary float-right jh-create-entity" id="jh-create-entity">
-            <FontAwesomeIcon icon="plus" />&nbsp; Create new Dsheadertemplate
+            <FontAwesomeIcon icon="plus" />&nbsp; Create new header template
           </Link>
         </h2>
         <div className="table-responsive">
@@ -88,11 +88,11 @@ export class Dsheadertemplate extends React.Component<IDsheadertemplateProps, ID
                   <th className="hand" onClick={this.sort('id')}>
                     ID <FontAwesomeIcon icon="sort" />
                   </th>
-                  <th className="hand" onClick={this.sort('headercontent')}>
+                  {/* <th className="hand" onClick={this.sort('headercontent')}>
                     Headercontent <FontAwesomeIcon icon="sort" />
-                  </th>
+                  </th> */}
                   <th className="hand" onClick={this.sort('headertemplatename')}>
-                    Headertemplatename <FontAwesomeIcon icon="sort" />
+                    Header template name <FontAwesomeIcon icon="sort" />
                   </th>
                   <th />
                 </tr>
@@ -105,7 +105,7 @@ export class Dsheadertemplate extends React.Component<IDsheadertemplateProps, ID
                         {dsheadertemplate.id}
                       </Button>
                     </td>
-                    <td>{dsheadertemplate.headercontent}</td>
+                    {/* <td>{dsheadertemplate.headercontent}</td> */}
                     <td>{dsheadertemplate.headertemplatename}</td>
                     <td className="text-right">
                       <div className="btn-group flex-btn-group-container">

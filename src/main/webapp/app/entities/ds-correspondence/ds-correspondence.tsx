@@ -14,7 +14,7 @@ import { IDSCorrespondence } from 'app/shared/model/ds-correspondence.model';
 import { APP_DATE_FORMAT, APP_LOCAL_DATE_FORMAT } from 'app/config/constants';
 import { ITEMS_PER_PAGE } from 'app/shared/util/pagination.constants';
 
-export interface IDSCorrespondenceProps extends StateProps, DispatchProps, RouteComponentProps<{ url: string }> {}
+export interface IDSCorrespondenceProps extends StateProps, DispatchProps, RouteComponentProps<{ url: string }> { }
 
 export type IDSCorrespondenceState = IPaginationBaseState;
 
@@ -68,9 +68,9 @@ export class DSCorrespondence extends React.Component<IDSCorrespondenceProps, ID
     return (
       <div>
         <h2 id="ds-correspondence-heading">
-          DS Correspondences
+          Letter Template
           <Link to={`${match.url}/new`} className="btn btn-primary float-right jh-create-entity" id="jh-create-entity">
-            <FontAwesomeIcon icon="plus" />&nbsp; Create new DS Correspondence
+            <FontAwesomeIcon icon="plus" />&nbsp; Create new Letter Template
           </Link>
         </h2>
         <div className="table-responsive">
@@ -85,12 +85,12 @@ export class DSCorrespondence extends React.Component<IDSCorrespondenceProps, ID
             <Table responsive>
               <thead>
                 <tr>
-                  <th className="hand" onClick={this.sort('id')}>
+                  {/* <th className="hand" onClick={this.sort('id')}>
                     ID <FontAwesomeIcon icon="sort" />
                   </th>
                   <th className="hand" onClick={this.sort('templateid')}>
                     Templateid <FontAwesomeIcon icon="sort" />
-                  </th>
+                  </th> */}
                   <th className="hand" onClick={this.sort('lettertype')}>
                     Lettertype <FontAwesomeIcon icon="sort" />
                   </th>
@@ -101,16 +101,20 @@ export class DSCorrespondence extends React.Component<IDSCorrespondenceProps, ID
                     Subcategory <FontAwesomeIcon icon="sort" />
                   </th>
                   <th className="hand" onClick={this.sort('lettertemplate')}>
-                    Lettertemplate <FontAwesomeIcon icon="sort" />
+                    Lettertemplate
+                <br />
+                    <FontAwesomeIcon icon="sort" />
                   </th>
-                  <th className="hand" onClick={this.sort('isactive')}>
+                  {/* <th className="hand" onClick={this.sort('isactive')}>
                     Isactive <FontAwesomeIcon icon="sort" />
                   </th>
                   <th className="hand" onClick={this.sort('parentid')}>
                     Parentid <FontAwesomeIcon icon="sort" />
-                  </th>
+                  </th> */}
                   <th className="hand" onClick={this.sort('templatetype')}>
-                    Templatetype <FontAwesomeIcon icon="sort" />
+                    Templatetype
+                    <FontAwesomeIcon icon="sort" />
+
                   </th>
                   <th />
                 </tr>
@@ -118,36 +122,40 @@ export class DSCorrespondence extends React.Component<IDSCorrespondenceProps, ID
               <tbody>
                 {dSCorrespondenceList.map((dSCorrespondence, i) => (
                   <tr key={`entity-${i}`}>
-                    <td>
+                    {/* <td>
                       <Button tag={Link} to={`${match.url}/${dSCorrespondence.id}`} color="link" size="sm">
                         {dSCorrespondence.id}
                       </Button>
                     </td>
-                    <td>{dSCorrespondence.templateid}</td>
+                    <td>{dSCorrespondence.templateid}</td> */}
                     <td>{dSCorrespondence.lettertype}</td>
                     <td>{dSCorrespondence.category}</td>
                     <td>{dSCorrespondence.subcategory}</td>
                     <td>
                       {dSCorrespondence.lettertemplate ? (
                         <div>
-                          <a onClick={openFile(dSCorrespondence.lettertemplateContentType, dSCorrespondence.lettertemplate)}>Open &nbsp;</a>
+                          {/* <a onClick={openFile(dSCorrespondence.lettertemplateContentType, dSCorrespondence.lettertemplate)}>Open &nbsp;</a> */}
                           <span>
                             {dSCorrespondence.lettertemplateContentType}, {byteSize(dSCorrespondence.lettertemplate)}
                           </span>
                         </div>
                       ) : null}
                     </td>
-                    <td>{dSCorrespondence.isactive}</td>
-                    <td>{dSCorrespondence.parentid}</td>
+                    {/* <td>{dSCorrespondence.isactive}</td>
+                    <td>{dSCorrespondence.parentid}</td> */}
                     <td>{dSCorrespondence.templatetype}</td>
                     <td className="text-right">
                       <div className="btn-group flex-btn-group-container">
-                        <Button tag={Link} to={`${match.url}/${dSCorrespondence.id}`} color="info" size="sm">
+                        {/* <Button tag={Link} to={`${match.url}/${dSCorrespondence.id}`} color="info" size="sm">
+                          <FontAwesomeIcon icon="eye" /> <span className="d-none d-md-inline">View</span>
+                        </Button> */}
+                        <Button  onClick={openFile(dSCorrespondence.lettertemplateContentType, dSCorrespondence.lettertemplate)} color="info" size="sm">
                           <FontAwesomeIcon icon="eye" /> <span className="d-none d-md-inline">View</span>
                         </Button>
                         <Button tag={Link} to={`${match.url}/${dSCorrespondence.id}/edit`} color="primary" size="sm">
                           <FontAwesomeIcon icon="pencil-alt" /> <span className="d-none d-md-inline">Edit</span>
                         </Button>
+                        
                         <Button tag={Link} to={`${match.url}/${dSCorrespondence.id}/delete`} color="danger" size="sm">
                           <FontAwesomeIcon icon="trash" /> <span className="d-none d-md-inline">Delete</span>
                         </Button>

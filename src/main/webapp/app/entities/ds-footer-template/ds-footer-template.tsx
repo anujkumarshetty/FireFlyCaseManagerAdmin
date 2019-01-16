@@ -68,9 +68,9 @@ export class DSFooterTemplate extends React.Component<IDSFooterTemplateProps, ID
     return (
       <div>
         <h2 id="ds-footer-template-heading">
-          DS Footer Templates
+            Footer Templates
           <Link to={`${match.url}/new`} className="btn btn-primary float-right jh-create-entity" id="jh-create-entity">
-            <FontAwesomeIcon icon="plus" />&nbsp; Create new DS Footer Template
+            <FontAwesomeIcon icon="plus" />&nbsp; Create new Footer Template
           </Link>
         </h2>
         <div className="table-responsive">
@@ -88,11 +88,11 @@ export class DSFooterTemplate extends React.Component<IDSFooterTemplateProps, ID
                   <th className="hand" onClick={this.sort('id')}>
                     ID <FontAwesomeIcon icon="sort" />
                   </th>
-                  <th className="hand" onClick={this.sort('footercontent')}>
-                    Footercontent <FontAwesomeIcon icon="sort" />
-                  </th>
+                  {/* <th className="hand" onClick={this.sort('footercontent')}>
+                    Footer content <FontAwesomeIcon icon="sort" />
+                  </th> */}
                   <th className="hand" onClick={this.sort('footertemplatename')}>
-                    Footertemplatename <FontAwesomeIcon icon="sort" />
+                    Footer template name <FontAwesomeIcon icon="sort" />
                   </th>
                   <th />
                 </tr>
@@ -105,7 +105,7 @@ export class DSFooterTemplate extends React.Component<IDSFooterTemplateProps, ID
                         {dSFooterTemplate.id}
                       </Button>
                     </td>
-                    <td>{dSFooterTemplate.footercontent}</td>
+                    {/* <td>{dSFooterTemplate.footercontent}</td> */}
                     <td>{dSFooterTemplate.footertemplatename}</td>
                     <td className="text-right">
                       <div className="btn-group flex-btn-group-container">

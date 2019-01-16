@@ -14,7 +14,7 @@ import { IDSCorrespondence } from 'app/shared/model/ds-correspondence.model';
 import { convertDateTimeFromServer } from 'app/shared/util/date-utils';
 import { mapIdList } from 'app/shared/util/entity-utils';
 
-export interface IDSCorrespondenceUpdateProps extends StateProps, DispatchProps, RouteComponentProps<{ id: string }> {}
+export interface IDSCorrespondenceUpdateProps extends StateProps, DispatchProps, RouteComponentProps<{ id: string }> { }
 
 export interface IDSCorrespondenceUpdateState {
   isNew: boolean;
@@ -40,9 +40,13 @@ export class DSCorrespondenceUpdate extends React.Component<IDSCorrespondenceUpd
     }
   }
 
-  onBlobChange = (isAnImage, name) => event => {
+  onBlobChange = (isAnImage, name) => {
+    
+    return event => {
+    console.log(event);
     setFileData(event, (contentType, data) => this.props.setBlob(name, data, contentType), isAnImage);
-  };
+  }
+};
 
   clearBlob = name => () => {
     this.props.setBlob(name, undefined, undefined);
@@ -78,7 +82,7 @@ export class DSCorrespondenceUpdate extends React.Component<IDSCorrespondenceUpd
       <div>
         <Row className="justify-content-center">
           <Col md="8">
-            <h2 id="fireFlyCaseManagerAdminApp.dSCorrespondence.home.createOrEditLabel">Create or edit a DSCorrespondence</h2>
+            <h2 id="fireFlyCaseManagerAdminApp.dSCorrespondence.home.createOrEditLabel">Create or edit a Letter Template</h2>
           </Col>
         </Row>
         <Row className="justify-content-center">
@@ -86,94 +90,94 @@ export class DSCorrespondenceUpdate extends React.Component<IDSCorrespondenceUpd
             {loading ? (
               <p>Loading...</p>
             ) : (
-              <AvForm model={isNew ? {} : dSCorrespondenceEntity} onSubmit={this.saveEntity}>
-                {!isNew ? (
+                <AvForm model={isNew ? {} : dSCorrespondenceEntity} onSubmit={this.saveEntity}>
+                  {/* {!isNew ? (
                   <AvGroup>
                     <Label for="id">ID</Label>
                     <AvInput id="ds-correspondence-id" type="text" className="form-control" name="id" required readOnly />
                   </AvGroup>
-                ) : null}
-                <AvGroup>
+                ) : null} */}
+                  {/* <AvGroup>
                   <Label id="templateidLabel" for="templateid">
-                    Templateid
+                    Template Id
                   </Label>
                   <AvField id="ds-correspondence-templateid" type="string" className="form-control" name="templateid" />
-                </AvGroup>
-                <AvGroup>
-                  <Label id="lettertypeLabel" for="lettertype">
-                    Lettertype
-                  </Label>
-                  <AvField
-                    id="ds-correspondence-lettertype"
-                    type="text"
-                    name="lettertype"
-                    validate={{
-                      required: { value: true, errorMessage: 'This field is required.' }
-                    }}
-                  />
-                </AvGroup>
-                <AvGroup>
-                  <Label id="categoryLabel" for="category">
-                    Category
-                  </Label>
-                  <AvField
-                    id="ds-correspondence-category"
-                    type="text"
-                    name="category"
-                    validate={{
-                      required: { value: true, errorMessage: 'This field is required.' }
-                    }}
-                  />
-                </AvGroup>
-                <AvGroup>
-                  <Label id="subcategoryLabel" for="subcategory">
-                    Subcategory
-                  </Label>
-                  <AvField
-                    id="ds-correspondence-subcategory"
-                    type="text"
-                    name="subcategory"
-                    validate={{
-                      required: { value: true, errorMessage: 'This field is required.' }
-                    }}
-                  />
-                </AvGroup>
-                <AvGroup>
+                </AvGroup> */}
                   <AvGroup>
-                    <Label id="lettertemplateLabel" for="lettertemplate">
-                      Lettertemplate
-                    </Label>
-                    <br />
-                    {lettertemplate ? (
-                      <div>
-                        <a onClick={openFile(lettertemplateContentType, lettertemplate)}>Open</a>
-                        <br />
-                        <Row>
-                          <Col md="11">
-                            <span>
-                              {lettertemplateContentType}, {byteSize(lettertemplate)}
-                            </span>
-                          </Col>
-                          <Col md="1">
-                            <Button color="danger" onClick={this.clearBlob('lettertemplate')}>
-                              <FontAwesomeIcon icon="times-circle" />
-                            </Button>
-                          </Col>
-                        </Row>
-                      </div>
-                    ) : null}
-                    <input id="file_lettertemplate" type="file" onChange={this.onBlobChange(false, 'lettertemplate')} />
-                    <AvInput
-                      type="hidden"
-                      name="lettertemplate"
-                      value={lettertemplate}
+                    <Label id="lettertypeLabel" for="lettertype">
+                      Letter Type
+                  </Label>
+                    <AvField
+                      id="ds-correspondence-lettertype"
+                      type="text"
+                      name="lettertype"
                       validate={{
                         required: { value: true, errorMessage: 'This field is required.' }
                       }}
                     />
                   </AvGroup>
-                </AvGroup>
-                <AvGroup>
+                  <AvGroup>
+                    <Label id="categoryLabel" for="category">
+                      Category
+                  </Label>
+                    <AvField
+                      id="ds-correspondence-category"
+                      type="text"
+                      name="category"
+                      validate={{
+                        required: { value: true, errorMessage: 'This field is required.' }
+                      }}
+                    />
+                  </AvGroup>
+                  <AvGroup>
+                    <Label id="subcategoryLabel" for="subcategory">
+                      Sub Category
+                  </Label>
+                    <AvField
+                      id="ds-correspondence-subcategory"
+                      type="text"
+                      name="subcategory"
+                      validate={{
+                        required: { value: true, errorMessage: 'This field is required.' }
+                      }}
+                    />
+                  </AvGroup>
+                  <AvGroup>
+                    <AvGroup>
+                      <Label id="lettertemplateLabel" for="lettertemplate">
+                        Letter Template
+                    </Label>
+                      <br />
+                      {lettertemplate ? (
+                        <div>
+                          <a onClick={openFile(lettertemplateContentType, lettertemplate)}>Open</a>
+                          <br />
+                          <Row>
+                            <Col md="11">
+                              <span>
+                                {lettertemplateContentType}, {byteSize(lettertemplate)}
+                              </span>
+                            </Col>
+                            <Col md="1">
+                              <Button color="danger" onClick={this.clearBlob('lettertemplate')}>
+                                <FontAwesomeIcon icon="times-circle" />
+                              </Button>
+                            </Col>
+                          </Row>
+                        </div>
+                      ) : null}
+                      <input id="file_lettertemplate" accept=".html" type="file" onChange={this.onBlobChange(false, 'lettertemplate')} />
+                      <AvInput
+                        type="hidden"
+                        name="lettertemplate"
+                        value={lettertemplate}
+                        validate={{
+                          required: { value: true, errorMessage: 'This field is required.' }
+                        }}
+                      />
+                    </AvGroup>
+                  </AvGroup>
+                  {/* <AvGroup>
                   <Label id="isactiveLabel" for="isactive">
                     Isactive
                   </Label>
@@ -184,30 +188,30 @@ export class DSCorrespondenceUpdate extends React.Component<IDSCorrespondenceUpd
                     Parentid
                   </Label>
                   <AvField id="ds-correspondence-parentid" type="string" className="form-control" name="parentid" />
-                </AvGroup>
-                <AvGroup>
-                  <Label id="templatetypeLabel" for="templatetype">
-                    Templatetype
+                </AvGroup> */}
+                  <AvGroup>
+                    <Label id="templatetypeLabel" for="templatetype">
+                      Template Type
                   </Label>
-                  <AvField
-                    id="ds-correspondence-templatetype"
-                    type="text"
-                    name="templatetype"
-                    validate={{
-                      required: { value: true, errorMessage: 'This field is required.' }
-                    }}
-                  />
-                </AvGroup>
-                <Button tag={Link} id="cancel-save" to="/entity/ds-correspondence" replace color="info">
-                  <FontAwesomeIcon icon="arrow-left" />&nbsp;
+                    <AvField
+                      id="ds-correspondence-templatetype"
+                      type="text"
+                      name="templatetype"
+                      validate={{
+                        required: { value: true, errorMessage: 'This field is required.' }
+                      }}
+                    />
+                  </AvGroup>
+                  <Button tag={Link} id="cancel-save" to="/entity/ds-correspondence" replace color="info">
+                    <FontAwesomeIcon icon="arrow-left" />&nbsp;
                   <span className="d-none d-md-inline">Back</span>
-                </Button>
-                &nbsp;
+                  </Button>
+                  &nbsp;
                 <Button color="primary" id="save-entity" type="submit" disabled={updating}>
-                  <FontAwesomeIcon icon="save" />&nbsp; Save
+                    <FontAwesomeIcon icon="save" />&nbsp; Save
                 </Button>
-              </AvForm>
-            )}
+                </AvForm>
+              )}
           </Col>
         </Row>
       </div>

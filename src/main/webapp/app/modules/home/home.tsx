@@ -21,8 +21,8 @@ export class Home extends React.Component<IHomeProp> {
     return (
       <Row>
         <Col md="9">
-          <h2>Welcome, Java Hipster!</h2>
-          <p className="lead">This is your homepage</p>
+          <h2>Welcome to Admin Configurator</h2>
+          {/* <p className="lead">This is your homepage</p> */}
           {account && account.login ? (
             <div>
               <Alert color="success">You are logged in as user {account.login}.</Alert>
@@ -48,25 +48,25 @@ export class Home extends React.Component<IHomeProp> {
               </Alert>
             </div>
           )}
-          <p>If you have any question on JHipster:</p>
+          <p>Our portal supports the following templates</p>
 
           <ul>
             <li>
-              <a href="https://www.jhipster.tech/" target="_blank" rel="noopener noreferrer">
-                JHipster homepage
+              <a href="http://localhost:8080/#/entity/dsheadertemplate" target="_blank" rel="noopener noreferrer">
+                Header template
               </a>
             </li>
             <li>
-              <a href="http://stackoverflow.com/tags/jhipster/info" target="_blank" rel="noopener noreferrer">
-                JHipster on Stack Overflow
+              <a href="http://localhost:8080/#/entity/ds-footer-template" target="_blank" rel="noopener noreferrer">
+                Footer template
               </a>
             </li>
             <li>
-              <a href="https://github.com/jhipster/generator-jhipster/issues?state=open" target="_blank" rel="noopener noreferrer">
-                JHipster bug tracker
+              <a href="http://localhost:8080/#/entity/ds-correspondence" target="_blank" rel="noopener noreferrer">
+                Letter template
               </a>
             </li>
-            <li>
+            {/* <li>
               <a href="https://gitter.im/jhipster/generator-jhipster" target="_blank" rel="noopener noreferrer">
                 JHipster public chat room
               </a>
@@ -75,15 +75,10 @@ export class Home extends React.Component<IHomeProp> {
               <a href="https://twitter.com/java_hipster" target="_blank" rel="noopener noreferrer">
                 follow @java_hipster on Twitter
               </a>
-            </li>
+            </li> */}
           </ul>
 
-          <p>
-            If you like JHipster, do not forget to give us a star on{' '}
-            <a href="https://github.com/jhipster/generator-jhipster" target="_blank" rel="noopener noreferrer">
-              Github
-            </a>!
-          </p>
+         
         </Col>
         <Col md="3" className="pad">
           <span className="hipster rounded" />

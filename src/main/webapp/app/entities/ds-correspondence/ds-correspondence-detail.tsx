@@ -12,7 +12,7 @@ import { IDSCorrespondence } from 'app/shared/model/ds-correspondence.model';
 // tslint:disable-next-line:no-unused-variable
 import { APP_DATE_FORMAT, APP_LOCAL_DATE_FORMAT } from 'app/config/constants';
 
-export interface IDSCorrespondenceDetailProps extends StateProps, DispatchProps, RouteComponentProps<{ id: string }> {}
+export interface IDSCorrespondenceDetailProps extends StateProps, DispatchProps, RouteComponentProps<{ id: string }> { }
 
 export class DSCorrespondenceDetail extends React.Component<IDSCorrespondenceDetailProps> {
   componentDidMount() {
@@ -25,15 +25,15 @@ export class DSCorrespondenceDetail extends React.Component<IDSCorrespondenceDet
       <Row>
         <Col md="8">
           <h2>
-            DSCorrespondence [<b>{dSCorrespondenceEntity.id}</b>]
+            Letter Template [<b>{dSCorrespondenceEntity.id}</b>]
           </h2>
           <dl className="jh-entity-details">
-            <dt>
+            {/* <dt>
               <span id="templateid">Templateid</span>
             </dt>
-            <dd>{dSCorrespondenceEntity.templateid}</dd>
+            <dd>{dSCorrespondenceEntity.templateid}</dd> */}
             <dt>
-              <span id="lettertype">Lettertype</span>
+              <span id="lettertype">Letter Type</span>
             </dt>
             <dd>{dSCorrespondenceEntity.lettertype}</dd>
             <dt>
@@ -41,11 +41,11 @@ export class DSCorrespondenceDetail extends React.Component<IDSCorrespondenceDet
             </dt>
             <dd>{dSCorrespondenceEntity.category}</dd>
             <dt>
-              <span id="subcategory">Subcategory</span>
+              <span id="subcategory">Sub Category</span>
             </dt>
             <dd>{dSCorrespondenceEntity.subcategory}</dd>
             <dt>
-              <span id="lettertemplate">Lettertemplate</span>
+              <span id="lettertemplate">Letter Template</span>
             </dt>
             <dd>
               {dSCorrespondenceEntity.lettertemplate ? (
@@ -59,14 +59,14 @@ export class DSCorrespondenceDetail extends React.Component<IDSCorrespondenceDet
                 </div>
               ) : null}
             </dd>
-            <dt>
+            {/* <dt>
               <span id="isactive">Isactive</span>
             </dt>
-            <dd>{dSCorrespondenceEntity.isactive}</dd>
-            <dt>
+            <dd>{dSCorrespondenceEntity.isactive}</dd> */}
+            {/* <dt>
               <span id="parentid">Parentid</span>
             </dt>
-            <dd>{dSCorrespondenceEntity.parentid}</dd>
+            <dd>{dSCorrespondenceEntity.parentid}</dd> */}
             <dt>
               <span id="templatetype">Templatetype</span>
             </dt>

@@ -47,7 +47,7 @@ public class DsheadertemplateServiceImpl implements DsheadertemplateService {
      * @return the list of entities
      */
     @Override
-    @Transactional(readOnly = true)
+    @Transactional(readOnly = false)
     public Page<Dsheadertemplate> findAll(Pageable pageable) {
         log.debug("Request to get all Dsheadertemplates");
         return dsheadertemplateRepository.findAll(pageable);
@@ -61,7 +61,7 @@ public class DsheadertemplateServiceImpl implements DsheadertemplateService {
      * @return the entity
      */
     @Override
-    @Transactional(readOnly = true)
+    @Transactional(readOnly = false)
     public Optional<Dsheadertemplate> findOne(Long id) {
         log.debug("Request to get Dsheadertemplate : {}", id);
         return dsheadertemplateRepository.findById(id);
