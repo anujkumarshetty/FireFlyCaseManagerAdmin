@@ -51,7 +51,6 @@ spring:
         hibernate.ddl-auto: none 
       
        
-       
         properties:
             hibernate.id.new_generator_mappings: true
             hibernate.connection.provider_disables_autocommit: true
@@ -60,7 +59,6 @@ spring:
             hibernate.generate_statistics: true
             
             
-          
     liquibase:
         contexts: dev
     mail:
