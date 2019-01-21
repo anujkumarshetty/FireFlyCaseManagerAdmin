@@ -1,4 +1,4 @@
-import { isPromise } from 'react-jhipster';
+ import { isPromise } from 'react-jhipster';
 import { toast } from 'react-toastify';
 
 const addErrorAlert = (message, key?, data?) => {
