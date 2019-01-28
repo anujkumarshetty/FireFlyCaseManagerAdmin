@@ -45,11 +45,11 @@ public class UserDTO {
 
     private String createdBy;
 
-    private Instant createdDate;
+    private String createdDate;
 
     private String lastModifiedBy;
 
-    private Instant lastModifiedDate;
+    private String lastModifiedDate;
 
     private Set<String> authorities;
 
@@ -147,11 +147,11 @@ public class UserDTO {
         this.createdBy = createdBy;
     }
 
-    public Instant getCreatedDate() {
+    public String getCreatedDate() {
         return createdDate;
     }
 
-    public void setCreatedDate(Instant createdDate) {
+    public void setCreatedDate(String createdDate) {
         this.createdDate = createdDate;
     }
 
@@ -163,11 +163,11 @@ public class UserDTO {
         this.lastModifiedBy = lastModifiedBy;
     }
 
-    public Instant getLastModifiedDate() {
+    public String getLastModifiedDate() {
         return lastModifiedDate;
     }
 
-    public void setLastModifiedDate(Instant lastModifiedDate) {
+    public void setLastModifiedDate(String lastModifiedDate) {
         this.lastModifiedDate = lastModifiedDate;
     }
 

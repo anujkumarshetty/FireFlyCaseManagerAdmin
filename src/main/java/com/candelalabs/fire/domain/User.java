@@ -81,9 +81,17 @@ public class User extends AbstractAuditingEntity implements Serializable {
     private String resetKey;
 
     @Column(name = "reset_date")
-    private Instant resetDate = null;
+    private String resetDate = null;
 
-    @JsonIgnore
+    public String getResetDate() {
+		return resetDate;
+	}
+
+	public void setResetDate(String resetDate) {
+		this.resetDate = resetDate;
+	}
+
+	@JsonIgnore
     @ManyToMany
     @JoinTable(
         name = "jhi_user_authority",
@@ -178,13 +186,13 @@ public class User extends AbstractAuditingEntity implements Serializable {
         this.resetKey = resetKey;
     }
 
-    public Instant getResetDate() {
-        return resetDate;
-    }
-
-    public void setResetDate(Instant resetDate) {
-        this.resetDate = resetDate;
-    }
+//    public Instant getResetDate() {
+//        return resetDate;
+//    }
+//
+//    public void setResetDate(Instant resetDate) {
+//        this.resetDate = resetDate;
+//    }
 
     public String getLangKey() {
         return langKey;

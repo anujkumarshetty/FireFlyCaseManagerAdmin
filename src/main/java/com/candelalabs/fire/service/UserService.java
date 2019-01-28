@@ -22,6 +22,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 import java.util.*;
@@ -65,14 +68,27 @@ public class UserService {
 
     public Optional<User> completePasswordReset(String newPassword, String key) {
         log.debug("Reset user password for reset key {}", key);
+        DateFormat format = new SimpleDateFormat("yyyy-MM-dd-HH.mm.ss.SSS", Locale.ENGLISH); 
+        Date date; //= format.parse(user.getResetDate());
+        
         return userRepository.findOneByResetKey(key)
-            .filter(user -> user.getResetDate().isAfter(Instant.now().minusSeconds(86400)))
+        		
+            .filter(user -> {
+				try {
+					return (format.parse(user.getResetDate())).toInstant().isAfter(Instant.now().minusSeconds(86400));
+				} catch (ParseException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				return true;
+			})
             .map(user -> {
                 user.setPassword(passwordEncoder.encode(newPassword));
                 user.setResetKey(null);
                 user.setResetDate(null);
                 return user;
             });
+        
     }
 
     public Optional<User> requestPasswordReset(String mail) {
@@ -80,7 +96,7 @@ public class UserService {
             .filter(User::getActivated)
             .map(user -> {
                 user.setResetKey(RandomUtil.generateResetKey());
-                user.setResetDate(Instant.now());
+                user.setResetDate(Instant.now().toString());
                 return user;
             });
     }
@@ -144,7 +160,7 @@ public class UserService {
         String encryptedPassword = passwordEncoder.encode(RandomUtil.generatePassword());
         user.setPassword(encryptedPassword);
         user.setResetKey(RandomUtil.generateResetKey());
-        user.setResetDate(Instant.now());
+        user.setResetDate(Instant.now().toString());
         user.setActivated(true);
         if (userDTO.getAuthorities() != null) {
             Set<Authority> authorities = userDTO.getAuthorities().stream()

@@ -91,18 +91,6 @@ export class DSCorrespondenceUpdate extends React.Component<IDSCorrespondenceUpd
               <p>Loading...</p>
             ) : (
                 <AvForm model={isNew ? {} : dSCorrespondenceEntity} onSubmit={this.saveEntity}>
-                  {/* {!isNew ? (
-                  <AvGroup>
-                    <Label for="id">ID</Label>
-                    <AvInput id="ds-correspondence-id" type="text" className="form-control" name="id" required readOnly />
-                  </AvGroup>
-                ) : null} */}
-                  {/* <AvGroup>
-                  <Label id="templateidLabel" for="templateid">
-                    Template Id
-                  </Label>
-                  <AvField id="ds-correspondence-templateid" type="string" className="form-control" name="templateid" />
-                </AvGroup> */}
                   <AvGroup>
                     <Label id="lettertypeLabel" for="lettertype">
                       Letter Type
@@ -177,18 +165,6 @@ export class DSCorrespondenceUpdate extends React.Component<IDSCorrespondenceUpd
                       />
                     </AvGroup>
                   </AvGroup>
-                  {/* <AvGroup>
-                  <Label id="isactiveLabel" for="isactive">
-                    Isactive
-                  </Label>
-                  <AvField id="ds-correspondence-isactive" type="string" className="form-control" name="isactive" />
-                </AvGroup>
-                <AvGroup>
-                  <Label id="parentidLabel" for="parentid">
-                    Parentid
-                  </Label>
-                  <AvField id="ds-correspondence-parentid" type="string" className="form-control" name="parentid" />
-                </AvGroup> */}
                   <AvGroup>
                     <Label id="templatetypeLabel" for="templatetype">
                       Template Type
